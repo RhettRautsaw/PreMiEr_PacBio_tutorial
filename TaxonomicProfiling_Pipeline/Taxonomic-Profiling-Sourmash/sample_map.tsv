@@ -1,0 +1,2 @@
+sample1	/path/to/sample1.hifi_reads.1.bam,/path/to/sample1.hifi_reads.2.bam
+sample2	/path/to/sample2.hifi_reads.1.bam,/path/to/sample2.hifi_reads.2.bam
