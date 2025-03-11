@@ -91,8 +91,8 @@ ssh username@login.ncshare.org
 ```
 
 We have tutorials available for running the following workflows:
-- [PacBio Metagenome Assembly (MAG) Pipeline](): Assemble and explore metagenomes
-- [PacBio Metagenome Taxonomic Classification Pipeline]():
+- [PacBio Metagenome Assembly (MAG) Pipeline](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial/tree/main/MAG_Pipeline): Assemble and explore metagenomes
+- [PacBio Metagenome Taxonomic Classification Pipeline](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial/tree/main/TaxonomicProfiling_Pipeline): Use SourMash to profile taxonomic communities (STILL IN DEVELOPMENT)
 
 <div style="display: flex; align-items: flex-start;">
   <img src="imgs/MAGWorkflow.png" width="75%" />
