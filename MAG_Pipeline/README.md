@@ -45,9 +45,8 @@ If you don't have your own data, then you can use one of [PacBio's Example Datas
 
 > For instructions on downloading the example dataset yourself, see the code below:
 > ```
-> wget https://downloads.pacbcloud.com/public/revio/2023Q3/ZymoTrumatrix/m84028_230113_224423_s1.hifi_reads.bam
-> pbindex -j 8 m84028_230113_224423_s1.hifi_reads.bam
-> samtools view -@ 8 -s 0.25 -b m84028_230113_224423_s1.hifi_reads.bam > m84028_230113_224423_s1.hifi_reads.subset.bam
+> wget https://downloads.pacbcloud.com/public/sequelii/2023Q3/ZymoTrumatrix/m64402e_220129_073242.hifi_reads.bam
+> pbindex -j 8 m64402e_220129_073242.hifi_reads.bam
 > ```
 
 # 3. Setup Input Files
@@ -57,7 +56,7 @@ The primary input for miniwdl and the MAG Pipeline is a JSON file with informati
 ```
 {
 	"metagenomics.sample_id": "ZymoBIOMICS",
-	"metagenomics.hifi_reads_bam": "/work/rrautsaw1/MAG_resources/m84028_230113_224423_s1.hifi_reads.bam",
+	"metagenomics.hifi_reads_bam": "/work/rrautsaw1/MAG_resources/m64402e_220129_073242.hifi_reads.bam",
 	"metagenomics.checkm2_ref_db": "/work/rrautsaw1/MAG_resources/uniref100.KO.1.dmnd",
 	"metagenomics.gtdbtk_data_tar_gz": "/work/rrautsaw1/MAG_resources/gtdbtk_r207_v2_data.tar.gz",
 	"metagenomics.backend": "HPC",
@@ -110,9 +109,17 @@ Focus on the `out` directory and `outputs.json` file as the final outputs. In pa
 If this is a family analysis, you may yet find subdirectories beneath this for each sample in your family. These will be numbered based on the order they are supplied in the input WDL. For example:
 ```
 ZymoBIOMICS_MAG/
- └── 20240903_131313_metagenomics/
+ └── 20250316_082409_metagenomics/
       └── out/
-          └── assembled_contigs_fa_gz/
-              └── 0
-                  └── ZymoBIOMICS_MAG
+          └── mag_summary_txt/
+              └── ZymoBIOMICS.HiFi_MAG.summary.txt
+```
+
+
+## Make Bandage Plot of Complete MAGs
+[Bandage](https://rrwick.github.io/Bandage/) is a program that can be used to visualize assembly graphs.
+```
+cd out/assembled_contigs_gfa
+cut -f5 ../mag_summary_txt/ZymoBIOMICS.HiFi_MAG.summary.txt | perl -pe 's/, /\n/g' > mag_contigs.txt
+grep -f mag_contigs.txt ZymoBIOMICS.asm.p_ctg.gfa > NEW.gfa
 ```
