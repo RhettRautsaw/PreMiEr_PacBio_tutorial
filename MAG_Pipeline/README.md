@@ -47,6 +47,7 @@ If you don't have your own data, then you can use one of [PacBio's Example Datas
 > ```
 > wget https://downloads.pacbcloud.com/public/revio/2023Q3/ZymoTrumatrix/m84028_230113_224423_s1.hifi_reads.bam
 > pbindex -j 8 m84028_230113_224423_s1.hifi_reads.bam
+> samtools view -@ 8 -s 0.25 -b m84028_230113_224423_s1.hifi_reads.bam > m84028_230113_224423_s1.hifi_reads.subset.bam
 > ```
 
 # 3. Setup Input Files

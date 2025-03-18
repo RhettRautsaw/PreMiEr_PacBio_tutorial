@@ -5,10 +5,13 @@
 **Rhett Rautsaw** \
 PacBio, Senior Scientist, Field Applications Bioinformatic Support (FABS)
 
+# ⚠️ **NOTE** ⚠️
+👷 This page is still under contruction. Please check back for updates. 🛠️
+
 # Summary
 This page is designed to guide PreMiEr researchers on how to setup, use, and understand PacBio's various WDL workflows (aka pipelines). Specifically, this page hosts several tutorials for running PacBio WDL workflows on [NCShare](https://userguide.ncshare.org/guides/accountreg/). 
 
-If you do not have command line experience or want a more push-button solutions, we recommend checking out PacBio's compatible analysis partners at [DNAstack](https://omics.ai/workflows/pacbio/), [DNAnexus](https://www.pacb.com/wp-content/uploads/PacBio-DNAnexus.pdf), and/or [FormBio](https://www.pacb.com/wp-content/uploads/FORM-Bio-flyer.pdf). 
+If you do not have command line experience or want a more push-button solutions, we recommend checking out PacBio's compatible analysis partners at [BugSeq](https://bugseq.com/pacbio), [DNAstack](https://omics.ai/workflows/pacbio/), [DNAnexus](https://www.pacb.com/wp-content/uploads/PacBio-DNAnexus.pdf), and/or [FormBio](https://www.pacb.com/wp-content/uploads/FORM-Bio-flyer.pdf). 
 
 # 1. Prerequisites
 Before starting a tutorial, please make sure you have the following prerequisites completed. 
@@ -19,6 +22,10 @@ Before starting a tutorial, please make sure you have the following prerequisite
 ### Create an Account
 If you do not already have an account, please visit [NCShare](https://userguide.ncshare.org/guides/accountreg/) to request one.
 
+### Access a terminal
+If you have a Mac or Linux computer, you can use the native terminal app to access NCShare via SSH connection. If you have a Windows computer, you can download and use apps like [MobaXterm](https://mobaxterm.mobatek.net/) or [PuTTY](https://www.putty.org/) to access NCShare via SSH connection.
+
+## 1.2. Setup SSH Key and Login
 ### Setup SSH Key
 Follow the instructions to [setup an SSH key for NCShare Cluster Computing](https://userguide.ncshare.org/guides/setupssh/). 
 
@@ -38,7 +45,7 @@ NCShare > My Profile > Authenticators > Add SSH Key
 ssh username@login.ncshare.org
 ```
 
-## 1.2. Download and Install Dependencies
+## 1.3. Download and Install Dependencies
 
 ### Download and install miniconda
 ```
@@ -60,7 +67,7 @@ pip3 install miniwdl
 pip3 install miniwdl-slurm
 ```
 
-## 1.3. Create miniwdl configuration file
+## 1.4. Create miniwdl configuration file
 In the `miniwdl_setup` directory of this repository, I have included a sample miniwdl configuration file. You will need to place this file in your HOME directory: `~/.config/minidwdl.cfg`
 
 The easiest solution is to clone this repository and move the file into it's final location.
@@ -73,7 +80,7 @@ mkdir -p ~/.config
 mv PreMiEr_PacBio_tutorial/miniwdl_setup/miniwdl.cfg ~/.config/miniwdl.cfg
 ```
 
-## 1.4. Test miniwdl installation
+## 1.5. Test miniwdl installation
 To test the miniwdl installation and configuration file, I've also included a small WDL workflow that will scatter 10 jobs onto your HPC, call a base docker/singularity container, and generate 10 "hello_*.txt" files. We will tell miniwdl to run and place the results in `~/WHALE_POD_TEST`
 
 ```
