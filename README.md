@@ -42,7 +42,7 @@ NCShare > My Profile > Authenticators > Add SSH Key
 
 ### Login to NCShare
 ```
-ssh username@login.ncshare.org
+ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
 ```
 
 ## 1.3. Download and Install Dependencies
@@ -94,7 +94,7 @@ If you run this command a second time, it should complete much faster as it will
 Now that you have completed the prerequisites, you are ready to start the tutorials! SSH into the NCShare compute cluster (if you are not already logged in).
 
 ```
-ssh username@login.ncshare.org
+ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
 ```
 
 We have tutorials available for running the following workflows:
