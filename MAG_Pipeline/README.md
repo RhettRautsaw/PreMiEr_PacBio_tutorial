@@ -102,6 +102,7 @@ The primary input for miniwdl and the MAG Pipeline is a JSON file with informati
 ```
 <details>
 <summary>Optional parameters to add if needed:  </summary>
+
 ```
 "metagenomics.min_contig_length": "Int (optional, default = 500000)",
 "metagenomics.min_contig_completeness": "Int (optional, default = 93)",
@@ -168,9 +169,10 @@ cat /out/mag_summary_txt/small_metagenome.HiFi_MAG.summary.txt
 
 
 ## View plots
-<img src="example_results/small_metagenome.Completeness-Contamination-Contigs.png" height="200" width="200"/>
-<img class="middle-img" src="example_results/small_metagenome.completeness_vs_size_scatter.png" height="200" width="200"/>
-<img src="example_results/small_metagenome.GenomeSizes-Depths.png" height="200" width="200"/>
+| Completeness vs Contamination | Completeness vs Size | Genome Sizes vs Depths |
+| -- | -- | -- |
+| <img src="example_results/small_metagenome.Completeness-Contamination-Contigs.png" height="200" /> | <img class="middle-img" src="example_results/small_metagenome.completeness_vs_size_scatter.png" height="200"/> | <img src="example_results/small_metagenome.GenomeSizes-Depths.png" height="200"/> |
+
 
 
 ## Make Bandage Plot of Complete MAGs
