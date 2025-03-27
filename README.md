@@ -5,11 +5,8 @@
 **Rhett Rautsaw** \
 PacBio, Senior Scientist, Field Applications Bioinformatic Support (FABS)
 
-# ⚠️ **NOTE** ⚠️
-👷 This page is still under contruction. Please check back for updates. 🛠️
-
 # Summary
-This page is designed to guide PreMiEr researchers on how to setup, use, and understand PacBio's various WDL workflows (aka pipelines). Specifically, this page hosts several tutorials for running PacBio WDL workflows on [NCShare](https://userguide.ncshare.org/guides/accountreg/). 
+This page is designed to guide PreMiEr researchers on how to setup, use, and understand PacBio's various workflows (aka pipelines). Specifically, this page hosts several tutorials for running PacBio workflows on [NCShare](https://userguide.ncshare.org/guides/accountreg/). 
 
 If you do not have command line experience or want a more push-button solutions, we recommend checking out PacBio's compatible analysis partners at [BugSeq](https://bugseq.com/pacbio), [DNAstack](https://omics.ai/workflows/pacbio/), [DNAnexus](https://www.pacb.com/wp-content/uploads/PacBio-DNAnexus.pdf), and/or [FormBio](https://www.pacb.com/wp-content/uploads/FORM-Bio-flyer.pdf). 
 
@@ -45,6 +42,11 @@ NCShare > My Profile > Authenticators > Add SSH Key
 ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
 ```
 
+Navigate to your work directory:
+```
+cd /work/username
+```
+
 ## 1.3. Download and Install Dependencies
 
 ### Download and install miniconda
@@ -60,12 +62,15 @@ conda config --add channels conda-forge
 conda config --show channels
 ```
 
-### Install miniwdl and miniwdl-slurm extension
+### Install miniwdl, snakemake, and extensions
 ```
-pip3 install miniwdl
+pip3 install miniwdl miniwdl-slurm
 
-pip3 install miniwdl-slurm
+pip3 install snakemake snakemake-executor-plugin-cluster-generic
 ```
+
+> **Why miniwdl and snakemake?**
+> miniwdl and snakemake are both workflow managers. While PacBio typically uses WDL for development of workflows, not all of PacBio's developers have experience working in this workflow language. As an example, the Taxonomic Profiling workflow using sourmash was written by a developer with more experience using snakemake.
 
 ## 1.4. Create miniwdl configuration file
 In the `miniwdl_setup` directory of this repository, I have included a sample miniwdl configuration file. You will need to place this file in your HOME directory: `~/.config/minidwdl.cfg`
@@ -89,17 +94,32 @@ miniwdl run PreMiEr_PacBio_tutorial/miniwdl_setup/whale_pod.wdl --dir ~/WHALE_PO
 
 If you run this command a second time, it should complete much faster as it will locate the cached result from the previous successful run. 
 
+## 1.6. Test snakemake installation
+To test the snakemake installation, I've included a small Snakefile which performs similarly to the miniwdl test above. 
+```
+cd PreMiEr_PacBio_tutorial/snakemake_setup
+
+snakemake --snakefile Snakefile \
+  --software-deployment-method conda --executor cluster-generic \
+  --cluster-generic-submit-cmd "mkdir -p HPC_logs/{rule} && \
+  sbatch --nodes=1 --cpus-per-task={threads} \
+  --output=HPC_logs/{rule}/{wildcards}.{jobid}.txt" \
+  -j 30 --jobname "{rule}.{wildcards}.{jobid}" --latency-wait 60
+```
+
 # Tutorials
 
-Now that you have completed the prerequisites, you are ready to start the tutorials! SSH into the NCShare compute cluster (if you are not already logged in).
+Now that you have completed the prerequisites, you are ready to start the tutorials! SSH into the NCShare compute cluster (if you are not already logged in) and navigate to your work directory.
 
 ```
 ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
+
+cd /work/username
 ```
 
 We have tutorials available for running the following workflows:
 - [PacBio Metagenome Assembly (MAG) Pipeline](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial/tree/main/MAG_Pipeline): Assemble and explore metagenomes
-- [PacBio Metagenome Taxonomic Classification Pipeline](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial/tree/main/TaxonomicProfiling_Pipeline): Use SourMash to profile taxonomic communities (STILL IN DEVELOPMENT)
+- [PacBio Metagenome Taxonomic Classification Pipeline](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial/tree/main/TaxonomicProfiling_Pipeline): Use SourMash to profile taxonomic communities
 
 <div style="display: flex; align-items: flex-start;">
   <img src="imgs/MAGWorkflow.png" width="75%" />

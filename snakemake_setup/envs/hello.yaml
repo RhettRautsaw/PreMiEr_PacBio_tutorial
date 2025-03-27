@@ -1,0 +1,5 @@
+name: hello-env
+channels:
+  - defaults
+dependencies:
+  - coreutils

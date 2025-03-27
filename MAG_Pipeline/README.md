@@ -4,18 +4,20 @@
 
 <img align="right" src="../imgs/MAGLogo.svg" width="75" />
 
-For more information regarding the PacBio WGS Variant Pipeline, see the links below:
+For more information regarding the PacBio MAG Pipeline, see the links below:
 
 - [GitHub](https://github.com/PacificBiosciences/HiFi-MAG-WDL) ([Additional docs](https://github.com/PacificBiosciences/pb-metagenomics-tools/blob/master/docs/Tutorial-HiFi-MAG-Pipeline.md))
 
 
 # 1. Prerequisites
-If you have not yet run through the prerequisites on the [home page](https://github.com/RhettRautsaw/EDIT_THIS_PAGE), please do that before continuing. 
+If you have not yet run through the prerequisites on the [home page](https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial), please do that before continuing. 
 
-SSH into the NCShare compute cluster (if you are not already logged in).
+SSH into the NCShare compute cluster (if you are not already logged in) and navigate to your work directory.
 
 ```
 ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
+
+cd /work/username
 ```
 
 # 2. Download and Setup WDL/Resources
@@ -49,7 +51,7 @@ cd /data/premier_workshop/pacbio_mag_resources
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release207/207.0/auxillary_files/gtdbtk_r207_v2_data.tar.gz
 wget https://zenodo.org/records/4626519/files/uniref100.KO.v1.dmnd.gz
 gunzip uniref100.KO.v1.dmnd.gz
-````
+```
 </details>
 
 ## Download Example Data (optional)
@@ -125,32 +127,30 @@ miniwdl is a workflow manager that submits a series of parallel jobs to your HPC
 We will use `tmux` to setup background jobs.
 
 ```
-tmux new -s small_metagenome 
+tmux new -s MAG_WDL 
 
 miniwdl run HiFi-MAG-WDL_v1.0.1/workflows/main.wdl \
 	--input input.hpc.json \
-	--dir /work/username/small_metagenome \
+	--dir MAG_WDL_OUT \
 	--verbose
 ```
 
 Detach tmux session by hitting `Ctrl+b` and then `d`. This will allow miniwdl to continue running in the background. If you'd like to view progress and the output of miniwdl, you can reattach your session by typing:
 
 ```
-tmux attach -t small_metagenome
+tmux attach -t MAG_WDL
 ```
 
-Once miniwdl completes, you can close the tmux session by typing exit in the attached session
+Once miniwdl completes, you can close the tmux session by typing `exit` in the attached session
 
 # 5. Understanding the Output
-A directory named `small_metagenome` will be created and inside these directories will be another dated directory with the format (`YYYYMMDD_HHMMSS_metagenomics`) corresponding to when the workflow was started. If a workflow needs to be restarted, you can submit the same command and it will create a second dated directory and cache the successful parts of the previous run to get to completion faster.
+A directory named `MAG_WDL_OUT` will be created and inside these directories will be another dated directory with the format (`YYYYMMDD_HHMMSS_metagenomics`) corresponding to when the workflow was started. If a workflow needs to be restarted, you can submit the same command and it will create a second dated directory and cache the successful parts of the previous run to get to completion faster.
 
-Inside `small_metagenome/YYYYMMDD_HHMMSS_metagenomics`, you will find several `call-*` directories which are the working directories for different parts of the workflow. Unless you are attempting to troubleshoot why your workflow is failing, these can be ignored. 
+Inside `MAG_WDL_OUT/YYYYMMDD_HHMMSS_metagenomics`, you will find several `call-*` directories which are the working directories for different parts of the workflow. Unless you are attempting to troubleshoot why your workflow is failing, these can be ignored. 
 
 Focus on the `out` directory and `outputs.json` file as the final outputs. In particular, the `out` directory will contain several sub-directories for different tasks in the workflow. You can find a full description of each of these directories here [(Output Directories Docs)](https://github.com/PacificBiosciences/HiFi-MAG-WDL/tree/main?tab=readme-ov-file#workflow-outputs).
-
-If this is a family analysis, you may yet find subdirectories beneath this for each sample in your family. These will be numbered based on the order they are supplied in the input WDL. For example:
 ```
-small_metagenome/
+MAG_WDL_OUT/
  └── 20250325_004446_metagenomics/
       └── out/
           └── mag_summary_txt/
