@@ -42,11 +42,6 @@ NCShare > My Profile > Authenticators > Add SSH Key
 ssh -i ~/.ssh/id_ed25519 username@login.ncshare.org
 ```
 
-Navigate to your work directory:
-```
-cd /work/username
-```
-
 ## 1.3. Download and Install Dependencies
 
 ### Download and install miniconda
@@ -73,11 +68,15 @@ pip3 install snakemake snakemake-executor-plugin-cluster-generic
 > miniwdl and snakemake are both workflow managers. While PacBio typically uses WDL for development of workflows, not all of PacBio's developers have experience working in this workflow language. As an example, the Taxonomic Profiling workflow using sourmash was written by a developer with more experience using snakemake.
 
 ## 1.4. Create miniwdl configuration file
-In the `miniwdl_setup` directory of this repository, I have included a sample miniwdl configuration file. You will need to place this file in your HOME directory: `~/.config/minidwdl.cfg`
+Navigate to your work directory:
+```
+cd /work/username
+```
+
+Next, in the `miniwdl_setup` directory of this repository, I have included a sample miniwdl configuration file. You will need to place this file in your HOME directory: `~/.config/minidwdl.cfg`
 
 The easiest solution is to clone this repository and move the file into it's final location.
-
-``` 
+```
 git clone https://github.com/RhettRautsaw/PreMiEr_PacBio_tutorial
 
 mkdir -p ~/.config
