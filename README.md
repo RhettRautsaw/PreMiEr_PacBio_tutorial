@@ -88,7 +88,7 @@ mv PreMiEr_PacBio_tutorial/miniwdl_setup/miniwdl.cfg ~/.config/miniwdl.cfg
 To test the miniwdl installation and configuration file, I've also included a small WDL workflow that will scatter 10 jobs onto your HPC, call a base docker/singularity container, and generate 10 "hello_*.txt" files. We will tell miniwdl to run and place the results in `~/WHALE_POD_TEST`
 
 ```
-miniwdl run PreMiEr_PacBio_tutorial/miniwdl_setup/whale_pod.wdl --dir ~/WHALE_POD_TEST
+miniwdl run PreMiEr_PacBio_tutorial/miniwdl_setup/whale_pod.wdl --dir WHALE_POD_TEST
 ```
 
 If you run this command a second time, it should complete much faster as it will locate the cached result from the previous successful run. 
