@@ -89,7 +89,7 @@ pbtk/pbindex small_metagenome.bam
 <br>
 
 # 3. Setup Input Files
-The primary input for miniwdl and the MAG Pipeline is a JSON file with information such as the sample ID, HiFi bam file locations, and the location of the reference databases. 
+The primary input for miniwdl and the MAG Pipeline is a JSON file with information such as the sample ID, HiFi bam file locations, and the location of the reference databases. I have already placed the input file for this tutorial in this repository directory.
 
 `input.hpc.json`
 ```
@@ -130,7 +130,7 @@ We will use `tmux` to setup background jobs.
 tmux new -s MAG_WDL 
 
 miniwdl run HiFi-MAG-WDL_v1.0.1/workflows/main.wdl \
-	--input input.hpc.json \
+	--input PreMiEr_PacBio_tutorial/MAG_Pipeline/input.hpc.json \
 	--dir MAG_WDL_OUT \
 	--verbose
 ```
