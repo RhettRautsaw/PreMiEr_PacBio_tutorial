@@ -166,7 +166,7 @@ MAG_WDL_OUT/
 
 ## View summary
 ```
-cat /out/mag_summary_txt/small_metagenome.HiFi_MAG.summary.txt
+cat out/mag_summary_txt/small_metagenome.HiFi_MAG.summary.txt
 ```
 
 | Name | Completeness | Contamination | Contig_Number | Contig_Names | Contig_Lengths | Contig_Depths | Avg_Depth | Coding_Density | Average_Gene_Length | Genome_Size | GC_Content | Total_Coding_Sequences | Classification |
