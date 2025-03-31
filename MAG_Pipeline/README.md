@@ -30,7 +30,7 @@ git clone \
   HiFi-MAG-WDL_v1.0.1
 ```
 
-## Download Reference Resources
+## Reference Resources
 The pipeline requires two publicly licensed reference databases – UniRef100 and the Genome Taxonomy Database Toolkit (GTDB-Tk). For convenience and to save time, we have pre-downloaded the data – **no download needed for this tutorial!**
 
 Reference Bundle Directory:
@@ -58,7 +58,7 @@ gunzip uniref100.KO.v1.dmnd.gz
 ```
 </details>
 
-## Download Example Data (optional)
+## Example Data (optional)
 Finally, we need some data to analyze. 
 
 If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples - **no downloaded needed for this tutorial.**

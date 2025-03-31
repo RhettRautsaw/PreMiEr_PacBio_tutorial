@@ -29,12 +29,12 @@ mv pb-metagenomics-tools/Taxonomic-Profiling-Sourmash .
 rm -rf pb-metagenomics-tools
 ```
 
-## Download Reference Resources
+## Reference Resources
 The pipeline requires taxonomic k-mer databases provided by [Sourmash](https://sourmash.readthedocs.io/en/latest/databases.html). For convenience and to save time, we have pre-downloaded the bacteria and archaea databases – **no download needed for this tutorial!**
 
 Reference Databases:
 ```
-ls /data/premier_workshop/pacbio_mag_resources/sourmash-db/genbank-2022*.zip
+ls /data/premier_workshop/pacbio_mag_resources/sourmash-db/genbank-2022*
 ```
 
 <details>
@@ -64,7 +64,7 @@ wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/genbank-2022.03/genbank-2
 ```
 </details>
 
-## Download Example Data (optional)
+## Example Data (optional)
 Finally, we need some data to analyze. 
 
 If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples and converted the dataset to fasta format - **no downloaded needed for this tutorial.**
