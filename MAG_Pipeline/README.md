@@ -31,16 +31,20 @@ git clone \
 ```
 
 ## Download Reference Resources
-The pipeline requires two publicly licensed reference databases – UniRef100 and the Genome Taxonomy Database Toolkit (GTDB-Tk). For convenience and to save time, we have pre-downloaded the data – no download needed for this tutorial! 
+The pipeline requires two publicly licensed reference databases – UniRef100 and the Genome Taxonomy Database Toolkit (GTDB-Tk). For convenience and to save time, we have pre-downloaded the data – **no download needed for this tutorial!**
 
 Reference Bundle Directory:
 ```
-/data/premier_workshop/pacbio_mag_resources/gtdbtk_r207_v2_data.tar.gz
-/data/premier_workshop/pacbio_mag_resources/uniref100.KO.v1.dmnd
+ls /data/premier_workshop/pacbio_mag_resources/gtdbtk_r207_v2_data.tar.gz
+ls /data/premier_workshop/pacbio_mag_resources/uniref100.KO.v1.dmnd
 ```
 
 <details>
 <summary> Optional details for downloading resources</summary>
+
+> ⚠️**DO NOT RUN FOR TUTORIAL**⚠️<br>
+> Downloading the reference databases is **NOT REQUIRED** for this tutorial. <br>
+> The data is available at `/data/premier_workshop/pacbio_mag_resources` 
 
 See [HiFi-MAG-WDL GitHub](https://github.com/PacificBiosciences/HiFi-MAG-WDL/tree/main/backends/hpc#reference-data) page for more details.
 
@@ -57,16 +61,19 @@ gunzip uniref100.KO.v1.dmnd.gz
 ## Download Example Data (optional)
 Finally, we need some data to analyze. 
 
-If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples - no downloaded needed for this tutorial. 
+If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples - **no downloaded needed for this tutorial.**
 
 Small metagenome dataset:
 ```
-/data/premier_workshop/pacbio_mag_resources/small_metagenome.bam
+ls /data/premier_workshop/pacbio_mag_resources/small_metagenome.bam
 ```
 
 <details>
 <summary> Optional details for downloading/creating small metagenome dataset</summary>
 
+> ⚠️**DO NOT RUN FOR TUTORIAL**⚠️<br>
+> Downloading the example database is **NOT REQUIRED** for this tutorial. <br>
+> The data is available at `/data/premier_workshop/pacbio_mag_resources` 
 ```
 # Download pbtk
 wget https://github.com/PacificBiosciences/pbtk/releases/download/v3.5.0/pbtk.tar.gz

@@ -30,15 +30,19 @@ rm -rf pb-metagenomics-tools
 ```
 
 ## Download Reference Resources
-The pipeline requires taxonomic k-mer databases provided by [Sourmash](https://sourmash.readthedocs.io/en/latest/databases.html). For convenience and to save time, we have pre-downloaded the bacteria and archaea databases – no download needed for this tutorial! 
+The pipeline requires taxonomic k-mer databases provided by [Sourmash](https://sourmash.readthedocs.io/en/latest/databases.html). For convenience and to save time, we have pre-downloaded the bacteria and archaea databases – **no download needed for this tutorial!**
 
 Reference Databases:
 ```
-/data/premier_workshop/pacbio_mag_resources/sourmash-db/genbank-2022*.zip
+ls /data/premier_workshop/pacbio_mag_resources/sourmash-db/genbank-2022*.zip
 ```
 
 <details>
 <summary> Optional details for downloading resources</summary>
+
+> ⚠️**DO NOT RUN FOR TUTORIAL**⚠️<br>
+> Downloading the dataset is **NOT REQUIRED** for this tutorial. <br>
+> The data is already available at `/data/premier_workshop/pacbio_mag_resources/` 
 
 See [pb-metagenomics-tools GitHub](https://github.com/PacificBiosciences/pb-metagenomics-tools/blob/master/docs/Tutorial-Taxonomic-Profiling-Sourmash.md) page for more details. Here I am only downloading the bacteria and archaea databases – however there are also databases for viral, protozoa, and fungal.
 
@@ -63,15 +67,19 @@ wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/genbank-2022.03/genbank-2
 ## Download Example Data (optional)
 Finally, we need some data to analyze. 
 
-If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples and converted the dataset to fasta format - no downloaded needed for this tutorial. 
+If you don't have your own data, then you can use one of [PacBio's Example Datasets](https://www.pacb.com/connect/datasets/). I have pre-downloaded and created a small metagenome dataset from two cultured bacterial samples and converted the dataset to fasta format - **no downloaded needed for this tutorial.**
 
 Small metagenome dataset:
 ```
-/data/premier_workshop/pacbio_mag_resources/small_metagenome.fasta
+ls /data/premier_workshop/pacbio_mag_resources/small_metagenome.fasta
 ```
 
 <details>
 <summary> Optional details for downloading/creating small metagenome dataset</summary>
+
+> ⚠️**DO NOT RUN FOR TUTORIAL**⚠️<br>
+> Downloading the reference databases is **NOT REQUIRED** for this tutorial. <br>
+> The data is already available at `/data/premier_workshop/pacbio_mag_resources/sourmash-db` 
 
 ```
 # Download pbtk
